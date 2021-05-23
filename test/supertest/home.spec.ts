@@ -26,4 +26,20 @@ test.group('Home Route', (group) => {
       .expect(200)
     assert.equal(body.message, 'Rumah berhasil ditambah')
   })
+
+  test('Make sure user can modify a home data', async () => {
+    await supertest(BASE_URL)
+      .put('/1')
+      .send({
+        data: {
+          name: 'Rumah siapa',
+        },
+      })
+      .expect(200)
+  })
+
+  test('Make sure user can access home data', async (assert) => {
+    const { body } = await supertest(BASE_URL).get('/1').expect(200)
+    assert.equal(body.home.name, 'Rumah siapa')
+  })
 })

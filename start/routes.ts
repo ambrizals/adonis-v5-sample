@@ -22,12 +22,14 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'HomeController.index')
 Route.post('/', 'HomeController.store')
+Route.put('/:id', 'HomeController.update')
+Route.get('/:id', 'HomeController.show')
 
 // Test Nested Group Routing
-Route.group(() => {
-  Route.group(() => {
-    Route.get('siap', () => {
-      return 'siap'
-    })
-  }).prefix('sub')
-}).prefix('sub')
+// Route.group(() => {
+//   Route.group(() => {
+//     Route.get('siap', () => {
+//       return 'siap'
+//     })
+//   }).prefix('sub')
+// }).prefix('sub')

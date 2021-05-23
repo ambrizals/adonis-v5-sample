@@ -15,14 +15,11 @@ async function runMigration() {
     fs.mkdirSync(`${__dirname}/tmp`)
   }
   await execa.node('ace', ['migration:run'], {
-    stdio: 'pipe',
+    stdio: 'inherit',
   })
 }
 
 async function rollbackMigrations() {
-  await execa.node('ace', ['migration:rollback'], {
-    stdio: 'pipe',
-  })
   fs.rmSync(`${__dirname}/tmp/db.sqlite3`)
 }
 
